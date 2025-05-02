@@ -16,13 +16,16 @@ def haversine(lat1, lon1, lat2, lon2):
 
 def display_logo():
     file_path = "financial fraud detector logo.png"
-    with open(file_path, "rb") as f:
-        data = f.read()
-        encoded = base64.b64encode(data).decode()
-        st.markdown(
-            f'<div style="text-align: center;"><img src="data:image/png;base64,{encoded}" width="200"/></div>',
-            unsafe_allow_html=True
-        )
+    try:
+        with open(file_path, "rb") as f:
+            data = f.read()
+            encoded = base64.b64encode(data).decode()
+            st.markdown(
+                f'<div style="text-align: center;"><img src="data:image/png;base64,{encoded}" width="200"/></div>',
+                unsafe_allow_html=True
+            )
+    except FileNotFoundError:
+        st.warning("Logo image not found. Displaying title only.")
 
 # App UI
 display_logo()
@@ -70,5 +73,3 @@ if st.button("Check For Fraud"):
         st.subheader(f"Prediction: {result}")
     else:
         st.error("Please fill all required fields.")
-
-    
