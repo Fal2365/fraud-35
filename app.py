@@ -15,7 +15,7 @@ def haversine(lat1, lon1, lat2, lon2):
     return geodesic((lat1, lon1), (lat2, lon2)).km
 
 def display_logo():
-    file_path = "fraud detector logo.png"
+    file_path = "financial fraud detector logo.png"
     with open(file_path, "rb") as f:
         data = f.read()
         encoded = base64.b64encode(data).decode()
@@ -26,7 +26,7 @@ def display_logo():
 
 # App UI
 display_logo()
-st.title("Fraud Detection System")
+st.markdown("<h1 style='text-align: center;'>Financial Fraud Detection System</h1>", unsafe_allow_html=True)
 st.write("Enter the Transaction details Below")
 
 merchant = st.text_input("Merchant Name")
@@ -71,3 +71,4 @@ if st.button("Check For Fraud"):
     else:
         st.error("Please fill all required fields.")
 
+    
